@@ -10,7 +10,7 @@ STOPWORDS = {
     "disebut", "merupakan", "terjadi", "proses", "fungsi", "peran",
 }
 
-
+# tahap utama substansi
 def build_substansi(retrieved_results):
     """
     Membangun substansi berdasarkan hasil retrieval FAISS.

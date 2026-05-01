@@ -11,17 +11,17 @@ from app.models import *
 from app.api.v1.router import api_router
 
 
-# 1️⃣ BUAT APP DULU
+# BUAT APP DULU
 app = FastAPI(
     title="BANKSOAL_BE API",
     version="1.0.0",
     description="Backend API untuk sistem Bank Soal berbasis AI (Extract & Recreate)"
 )
 
-# 2️⃣ BUAT SEMUA TABEL JIKA BELUM ADA
+# BUAT SEMUA TABEL JIKA BELUM ADA
 Base.metadata.create_all(bind=engine)
 
-# 3️⃣ TAMBAHKAN CORS — izinkan semua origin lokal yang mungkin dipakai Vite
+# TAMBAHKAN CORS — izinkan semua origin lokal yang mungkin dipakai Vite
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -38,5 +38,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 4️⃣ INCLUDE ROUTER
+# menghubungkan semua route ke aplikasi (utama)
 app.include_router(api_router, prefix="/api/v1")

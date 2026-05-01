@@ -46,7 +46,7 @@ def check_similarity_with_references(
     ]
 
     # ===============================
-    # Cek tiap soal hasil generate
+    # Cek tiap soal hasil generate, similarity
     # ===============================
     for soal in generated_soal_list:
 

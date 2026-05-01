@@ -12,9 +12,7 @@ from app.services.persistence.save_soal_service import save_generated_soal
 router = APIRouter(prefix="/soal", tags=["Soal Management"])
 
 
-# ==============================
 # DATABASE DEPENDENCY
-# ==============================
 
 def get_db():
     db = SessionLocal()
@@ -23,10 +21,7 @@ def get_db():
     finally:
         db.close()
 
-
-# ==============================
 # REQUEST SCHEMA
-# ==============================
 
 class OpsiItem(BaseModel):
     text: str
@@ -77,10 +72,8 @@ class SaveSoalRequest(BaseModel):
         return v
 
 
-# ==============================
 # SAVE ENDPOINT
-# ==============================
-
+# utama penyimpanan utama
 @router.post("/save")
 def save_soal(request: SaveSoalRequest):
     try:
@@ -145,7 +138,7 @@ def list_soal(
 
 # ==============================
 # DELETE SOAL
-# ==============================
+
 
 @router.delete("/{soal_id}")
 def delete_soal(soal_id: int, db: Session = Depends(get_db)):

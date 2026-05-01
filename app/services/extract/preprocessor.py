@@ -94,6 +94,8 @@ def clean_text(text: str) -> str:
     lines = text.split("\n")
     filtered_lines = []
 
+
+    # tahap utama Pre-Processing
     for line in lines:
         line = line.strip()
 

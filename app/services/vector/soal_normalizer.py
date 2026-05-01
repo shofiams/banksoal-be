@@ -13,6 +13,7 @@ def normalize_soal(soal):
     Digunakan saat build vector dari DB.
     """
 
+    # normalisasi soal utama
     pertanyaan = clean_text(soal.pertanyaan)
 
     opsi_text = []

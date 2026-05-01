@@ -10,32 +10,28 @@ from app.api.v1.pengujian_routes import router as pengujian_router
 
 api_router = APIRouter()
 
-# ======================
 # MASTER DATA
-# ======================
 api_router.include_router(master_router)
 
-# ======================
-# AI FEATURES
-# ======================
+
+# daftar router recreate ke dalam api_router
 api_router.include_router(
     recreate_router,
     prefix="/ai",
     tags=["AI Recreate"]
 )
 
+# daftar router extract ke dalam api router
 api_router.include_router(
     extract_router,
     prefix="/ai",
     tags=["AI Extract"]
 )
 
-# ======================
+
 # SOAL MANAGEMENT
-# ======================
 api_router.include_router(soal_routes.router)
 
-# ======================
+
 # PENGUJIAN — hapus saat penyerahan ke mitra
-# ======================
 api_router.include_router(pengujian_router)

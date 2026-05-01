@@ -13,6 +13,7 @@ def chunk_text(text: str, page_number: int, file_id: str,
     start = 0
     chunk_index = 0
 
+    # proses utama chunking
     while start < text_length:
         end = min(start + chunk_size, text_length)
 

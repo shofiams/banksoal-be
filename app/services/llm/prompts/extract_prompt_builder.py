@@ -46,6 +46,7 @@ SETIAP soal harus MANDIRI dan bisa dijawab tanpa merujuk dokumen asli.
 Soal harus menguji PEMAHAMAN KONSEP, bukan kemampuan membaca teks.
 """
 
+# tahap utama context engineering
 def build_extract_prompt(
     modul: str,
     topik: str,

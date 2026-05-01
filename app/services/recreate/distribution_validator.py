@@ -16,7 +16,7 @@ def validate_distribution(generated_soal_list, distribusi_target):
     is_sub_level = any(k in SUB_TO_LEVEL for k in distribusi_target.keys())
 
     if is_sub_level:
-        # ── Hitung sub_level dari hasil generate ──
+        # ── Hitung sub_level dari hasil generate, validasi utama──
         count_sub = {k: 0 for k in SUB_TO_LEVEL}
         for soal in generated_soal_list:
             sub = soal.get("sub_level", "").upper()
@@ -32,6 +32,7 @@ def validate_distribution(generated_soal_list, distribusi_target):
                 elif tk == "HOTS":
                     count_sub["C4"] += 1
 
+        # validasi utama
         for sub, target in distribusi_target.items():
             if target == 0:
                 continue

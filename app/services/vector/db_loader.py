@@ -8,6 +8,7 @@ def get_soal_lama(id_topik, level_list):
     Mengambil soal lama dari database berdasarkan topik dan level.
     """
 
+    # get soal lama utama
     db = SessionLocal()
     try:
         soal_list = (

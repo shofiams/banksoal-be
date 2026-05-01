@@ -8,7 +8,7 @@ SUB_TO_LEVEL = {
 ALLOWED_SUB_LEVELS = set(SUB_TO_LEVEL.keys())
 ALLOWED_LEGACY     = {"LOTS", "MOTS", "HOTS"}
 
-
+# utama, validasi & normalisasi parameter
 def process_parameter(
     id_topik,
     jenjang,

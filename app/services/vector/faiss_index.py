@@ -12,6 +12,7 @@ class FaissIndex:
         self.dimension = dimension
         self.metric = metric.lower()
 
+        # proses utama saat inialisai
         if self.metric == "cosine":
             self.index = faiss.IndexFlatIP(dimension)
         else:
@@ -23,12 +24,14 @@ class FaissIndex:
         if self.metric == "cosine":
             faiss.normalize_L2(vectors)
 
+    #  utama saat simpan
     def add_vector(self, vector: np.ndarray, meta: dict):
         vector = np.array([vector]).astype("float32")
         self._normalize(vector)
         self.index.add(vector)
         self.metadata.append(meta)
 
+    #  utama saat pencarian disini proses semantic search
     def search(self, query_vector: np.ndarray, k: int = 5):
         query_vector = np.array([query_vector]).astype("float32")
         self._normalize(query_vector)

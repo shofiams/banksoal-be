@@ -3,7 +3,7 @@ from app.core.database import SessionLocal
 from app.models.soal import Soal
 from app.models.opsi_soal import OpsiSoal
 
-
+# utama penyimpanan soal
 def save_generated_soal(
     generated_list,
     id_topik,

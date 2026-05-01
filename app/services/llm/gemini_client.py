@@ -21,7 +21,7 @@ MAX_RETRIES       = 3    # berapa kali coba ulang kalau gagal
 RETRY_DELAY_BASE  = 5    # detik jeda awal (dikalikan nomor attempt)
 MAX_SOAL_PER_CALL = 8    # batas soal per satu LLM call (chunked generation)
 
-
+# proses generate soal
 def generate_text(prompt: str, timeout: int = REQUEST_TIMEOUT) -> str:
     """
     Kirim prompt ke Gemini dengan:

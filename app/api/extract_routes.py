@@ -96,7 +96,7 @@ async def upload_file(file: UploadFile = File(...)):
     return {"file_id": file_id, "total_pages": len(pages), "total_valid_chunks": len(all_chunks)}
 
 
-# FULL PIPELINE — GENERATE PER SUB-LEVEL (C1-C6)
+# tahap input parameter
 
 @router.post("/full-generate")
 async def full_generate(

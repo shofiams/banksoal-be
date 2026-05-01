@@ -201,26 +201,16 @@ def run_recreate_pipeline(
     }
 
     # ── STEP 8: LLM Generation — CHUNKED PER SUB-LEVEL ──────────────────────
-    #
-    # KENAPA TIDAK PAKAI generate_text_chunked() di sini?
-    # Karena recreate mengirim SEMUA sub-level dalam 1 prompt. Kalau dipecah
-    # pakai generate_text_chunked biasa, setiap batch akan menerima distribusi
-    # penuh (misal C1:3, C4:7) padahal hanya diminta 5 soal → Gemini bingung.
-    #
-    # SOLUSI: generate per sub-level satu per satu, lalu gabungkan.
-    # Sama seperti extract_routes — setiap call hanya untuk 1 level kognitif.
-    # Ini menjamin distribusi soal tetap TEPAT sesuai permintaan.
-    #
-    # ─────────────────────────────────────────────────────────────────────────
     print("\n===== STEP 8 - LLM GENERATION (PER SUB-LEVEL) =====")
     step_start   = time.time()
     semua_soal   = []
     per_sub_logs = {}
 
+    # generate soal per sub level utama
     for sub_level, jumlah in param["distribusi_level"].items():
         if jumlah == 0:
             continue
-
+ 
         level_utama = SUB_TO_LEVEL.get(sub_level, sub_level)
         print(f"  → Generate {sub_level} ({level_utama}): {jumlah} soal")
 

@@ -32,7 +32,7 @@ def map_level_to_instruction(level: str) -> str:
 
     return mapping_legacy.get(level, "penjelasan konsep utama")
 
-
+# proses utama query builder
 def build_query(modul: str, topik: str, level: str) -> str:
     """
     Build query untuk semantic search ke FAISS.

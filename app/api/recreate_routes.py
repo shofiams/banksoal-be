@@ -14,7 +14,7 @@ SUB_TO_LEVEL = {
 
 ALLOWED_SUB_LEVELS = set(SUB_TO_LEVEL.keys())
 
-
+#input parameter recreate
 class RecreateRequest(BaseModel):
     id_topik: int
     jenjang: str
@@ -31,9 +31,9 @@ def recreate_soal(request: RecreateRequest):
 
     distribusi = request.distribusi_level
 
-    # ===============================
+
     # DETEKSI FORMAT: sub-level (C1-C6) atau legacy (LOTS/MOTS/HOTS)
-    # ===============================
+  
     is_sub_level_format = any(k in ALLOWED_SUB_LEVELS for k in distribusi.keys())
     is_legacy_format    = any(k in {"LOTS", "MOTS", "HOTS"} for k in distribusi.keys())
 
@@ -43,9 +43,7 @@ def recreate_soal(request: RecreateRequest):
             detail="Jangan campur format sub-level (C1-C6) dengan format lama (LOTS/MOTS/HOTS)."
         )
 
-    # ===============================
     # VALIDASI FORMAT SUB-LEVEL (C1-C6)
-    # ===============================
     if is_sub_level_format:
         # Cek key valid
         for level in distribusi.keys():
@@ -99,9 +97,7 @@ def recreate_soal(request: RecreateRequest):
 
         distribusi_final = {k: v for k, v in distribusi.items() if v > 0}
 
-    # ===============================
     # JALANKAN PIPELINE
-    # ===============================
     hasil = run_recreate_pipeline(
         id_topik=request.id_topik,
         jenjang=request.jenjang,
