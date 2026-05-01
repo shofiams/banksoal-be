@@ -41,6 +41,7 @@ def randomize_option_positions(question: dict) -> dict:
     question["opsi"] = opsi
     return question
 
+# tahap 11 extract
 # validasi soal utama
 def validate_and_fix_questions(questions: list, expected_level: str) -> list:
     """
@@ -61,9 +62,7 @@ def validate_and_fix_questions(questions: list, expected_level: str) -> list:
 
     for q in questions:
         try:
-            # =========================
             # VALIDASI FIELD WAJIB
-            # =========================
             if not isinstance(q, dict):
                 logging.warning("Format soal bukan dict.")
                 continue
@@ -78,9 +77,8 @@ def validate_and_fix_questions(questions: list, expected_level: str) -> list:
 
             opsi = q["opsi"]
 
-            # =========================
+
             # VALIDASI OPSI
-            # =========================
             if not isinstance(opsi, list) or len(opsi) < 4:
                 logging.warning("Opsi kurang dari 4, dilewati.")
                 continue
@@ -92,14 +90,11 @@ def validate_and_fix_questions(questions: list, expected_level: str) -> list:
                 logging.warning("Jumlah jawaban benar tidak = 1.")
                 continue
 
-            # =========================
+
             # SET LEVEL SESUAI REQUEST
-            # =========================
             q["level_kognitif"] = expected_level
 
-            # =========================
             # RANDOMISASI OPSI
-            # =========================
             q = randomize_option_positions(q)
 
             validated.append(q)
@@ -109,3 +104,6 @@ def validate_and_fix_questions(questions: list, expected_level: str) -> list:
             continue
 
     return validated
+
+# tahap 12 kembali ke front end untuk validasi
+# ketika disimpan dikirim ke soal_routes.py

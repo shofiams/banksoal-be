@@ -25,7 +25,7 @@ class RecreateRequest(BaseModel):
     # Tetap support format lama {"LOTS": 2, "MOTS": 1, "HOTS": 2} untuk kompatibilitas
     distribusi_level: Dict[str, int]
 
-
+# tahap ke 1 recreate
 @router.post("/recreate")
 def recreate_soal(request: RecreateRequest):
 
@@ -72,9 +72,7 @@ def recreate_soal(request: RecreateRequest):
         # Hanya kirim sub-level yang > 0 ke pipeline
         distribusi_final = {k: v for k, v in distribusi.items() if v > 0}
 
-    # ===============================
     # VALIDASI FORMAT LEGACY (LOTS/MOTS/HOTS)
-    # ===============================
     else:
         allowed_legacy = {"LOTS", "MOTS", "HOTS"}
         for level in distribusi.keys():
@@ -116,3 +114,4 @@ def recreate_soal(request: RecreateRequest):
         "data": soal_data,
         "pipeline_log": pipeline_log
     }
+# tahap ke 2 recreate_pipeline

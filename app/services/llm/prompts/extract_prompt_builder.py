@@ -46,6 +46,7 @@ SETIAP soal harus MANDIRI dan bisa dijawab tanpa merujuk dokumen asli.
 Soal harus menguji PEMAHAMAN KONSEP, bukan kemampuan membaca teks.
 """
 
+# tahap 9 extract
 # tahap utama context engineering
 def build_extract_prompt(
     modul: str,
@@ -136,10 +137,11 @@ MATERI SUMBER:
     return prompt
 
 
-# =========================================================
+# tahap 10 gemini_client.py
+
+
 # Fungsi legacy untuk kompatibilitas (LOTS/MOTS/HOTS)
 # Dipakai jika ada kode lama yang masih memanggil dengan level="LOTS"
-# =========================================================
 def build_extract_prompt_legacy(
     modul: str,
     topik: str,

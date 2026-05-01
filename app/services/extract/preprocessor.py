@@ -1,6 +1,6 @@
 import re
 
-
+# tahap ke 3 extract
 def clean_text(text: str) -> str:
     """
     Advanced Preprocessing & Structural Filtering
@@ -15,14 +15,10 @@ def clean_text(text: str) -> str:
             bukan metadata / noise sampul dokumen.
     """
 
-    # ================================
     # 1. Lowercase
-    # ================================
     text = text.lower()
 
-    # ================================
     # 2. HAPUS HEADER MODUL & METADATA PENERBIT
-    # ================================
     text = re.sub(r"modul\s+\w+.*?kd\s*[\d\.]+", "", text)
 
     # Baris "penyusun : nama", "editor : nama", dsb
@@ -40,9 +36,7 @@ def clean_text(text: str) -> str:
     # Cetakan ke-n / edisi revisi
     text = re.sub(r"(cetakan|edisi)\s+(ke[\s\-]?\w+|revisi).*", "", text)
 
-    # ================================
     # 3. HAPUS NOMOR HALAMAN & TITIK-TITIK PANJANG
-    # ================================
     text = re.sub(r"\bhalaman\s*\d+\b", "", text)
     text = re.sub(r"\bpage\s*\d+\b", "", text)
     text = re.sub(r"^\s*\d+\s*$", "", text, flags=re.MULTILINE)
@@ -53,22 +47,16 @@ def clean_text(text: str) -> str:
     # Hapus pola "Judul Bab ............... 12" (baris daftar isi)
     text = re.sub(r"\w[\w\s]+\s{2,}\d+\s*$", "", text, flags=re.MULTILINE)
 
-    # ================================
     # 4. HAPUS GAMBAR / TABEL / LINK
-    # ================================
     text = re.sub(r"\bgambar\s*\d+.*", "", text)
     text = re.sub(r"\btabel\s*\d+.*", "", text)
     text = re.sub(r"https?://\S+", "", text)
     text = re.sub(r"www\.\S+", "", text)
 
-    # ================================
     # 5. HAPUS PILIHAN JAWABAN (a. b. c. d. e.)
-    # ================================
     text = re.sub(r"\b[a-e]\.\s*", "", text)
 
-    # ================================
     # 6. KEYWORD FILTERING STRUKTURAL (PER BARIS)
-    # ================================
     structural_keywords = [
         # Struktur dokumen
         "identitas modul", "pendahuluan", "peta konsep",
@@ -125,20 +113,16 @@ def clean_text(text: str) -> str:
 
     text = " ".join(filtered_lines)
 
-    # ================================
     # 7. HAPUS ANGKA BERDIRI SENDIRI
-    # ================================
     text = re.sub(r"\b\d+\b", "", text)
 
-    # ================================
     # 8. HAPUS SIMBOL ANEH
     #    (pertahankan titik & koma agar kalimat tetap utuh)
-    # ================================
     text = re.sub(r"[^\w\s\.\,\-]", " ", text)
 
-    # ================================
     # 9. NORMALISASI SPASI
-    # ================================
     text = re.sub(r"\s+", " ", text).strip()
 
     return text
+
+# tahap ke 4 chunker.py

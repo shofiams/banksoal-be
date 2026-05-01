@@ -95,9 +95,8 @@ async def upload_file(file: UploadFile = File(...)):
 
     return {"file_id": file_id, "total_pages": len(pages), "total_valid_chunks": len(all_chunks)}
 
-
+# tahap awal AI Extract, request awal dari front end
 # tahap input parameter
-
 @router.post("/full-generate")
 async def full_generate(
     file: UploadFile = File(...),
@@ -257,7 +256,7 @@ async def full_generate(
         faiss_index.add_vector(vector, meta)
     step_elapsed = round(time.time() - step_start, 2)
 
-    # REVISI: tampilkan 3 sampel chunk yang benar-benar tersimpan di FAISS
+    # tampilkan 3 sampel chunk yang benar-benar tersimpan di FAISS
     faiss_stored_samples = [
         {
             "chunk_id"   : all_chunks[i]["chunk_id"],
@@ -276,7 +275,7 @@ async def full_generate(
         "output_sample"          : faiss_stored_samples
     }
 
-    # ── Generate per sub-level ──
+    # Generate per sub-level 
     results_per_level = {}
     per_level_logs    = {}
 
@@ -336,11 +335,10 @@ async def full_generate(
             "output_sample"  : search_samples
         }
 
-        # ── STEP 9: Generate soal — CHUNKED ──────────────────────────────────
+        # STEP 9: Generate soal — CHUNKED 
         # PERUBAHAN: Dulu 1 LLM call untuk semua soal → sekarang dipecah
         # jadi batch kecil (MAX_SOAL_PER_CALL) supaya tidak timeout.
         # Karena loop ini per sub-level, distribusi kognitif tetap terjaga.
-        # ─────────────────────────────────────────────────────────────────────
         total_start = time.time()
 
         # Closure: tangkap sub_level & retrieved dari iterasi saat ini
@@ -396,3 +394,5 @@ async def full_generate(
     }
 
     return results_per_level
+
+# tahap kedua di parser.py

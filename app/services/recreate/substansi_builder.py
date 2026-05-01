@@ -10,6 +10,7 @@ STOPWORDS = {
     "disebut", "merupakan", "terjadi", "proses", "fungsi", "peran",
 }
 
+# tahap ke 7 recreate
 # tahap utama substansi
 def build_substansi(retrieved_results):
     """
@@ -46,6 +47,8 @@ def build_substansi(retrieved_results):
     }
 
     return substansi
+
+# tahap 8 recreate_prompt_builder
 
 
 def extract_concept(text: str) -> list:

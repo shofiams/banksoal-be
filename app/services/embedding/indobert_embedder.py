@@ -38,9 +38,12 @@ else:
 
 class IndoBERTEmbedder:
 
+    # tahap 5 recreate nama topik
     def embed_text(self, text: str) -> np.ndarray:
         return self.embed_batch([text], batch_size=1)[0]
 
+    # tahap ke 5 extract
+    # tahap 4c recreate
     # proses utama embed
     def embed_batch(self, texts: list, batch_size: int = 32) -> np.ndarray:
         hf_aktif = _use_hf()
@@ -105,3 +108,5 @@ def embed_text(text: str) -> np.ndarray:
 
 def embed_text_debug(text: str) -> np.ndarray:
     return _embedder_instance.embed_text_debug(text)
+
+# tahap ke 6 fais_index.py

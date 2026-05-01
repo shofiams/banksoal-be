@@ -24,6 +24,8 @@ class FaissIndex:
         if self.metric == "cosine":
             faiss.normalize_L2(vectors)
 
+    # tahap ke 6 extract
+    # tahap 4d recreate
     #  utama saat simpan
     def add_vector(self, vector: np.ndarray, meta: dict):
         vector = np.array([vector]).astype("float32")
@@ -31,6 +33,10 @@ class FaissIndex:
         self.index.add(vector)
         self.metadata.append(meta)
 
+    # tahap ke 7 query_builder.py
+
+    # tahap 8 extract
+    # tahap 6 recreate
     #  utama saat pencarian disini proses semantic search
     def search(self, query_vector: np.ndarray, k: int = 5):
         query_vector = np.array([query_vector]).astype("float32")
@@ -46,4 +52,6 @@ class FaissIndex:
                 results.append(item)
 
         return results
+    
+    # tahap ke 9 extract_prompt_builder
 

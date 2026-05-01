@@ -32,12 +32,13 @@ def map_level_to_instruction(level: str) -> str:
 
     return mapping_legacy.get(level, "penjelasan konsep utama")
 
+# tahap ke 7 extract
 # proses utama query builder
 def build_query(modul: str, topik: str, level: str) -> str:
     """
     Build query untuk semantic search ke FAISS.
 
-    REVISI:
+    PERINTAH:
     - Query lebih PENDEK dan SPESIFIK (bukan paragraph panjang)
     - Format: kalimat konseptual singkat tentang topik
     - IndoBERT bekerja lebih baik dengan kalimat 1-2 baris
@@ -57,3 +58,5 @@ def build_query(modul: str, topik: str, level: str) -> str:
     )
 
     return query.strip()
+
+# TAHAP KE 8 FAISS_INDEX

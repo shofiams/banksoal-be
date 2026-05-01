@@ -72,6 +72,8 @@ class SaveSoalRequest(BaseModel):
         return v
 
 
+# tahap ke 12 extract simpan soal
+# tahap ke 11 recreate simpan soal
 # SAVE ENDPOINT
 # utama penyimpanan utama
 @router.post("/save")
@@ -96,10 +98,11 @@ def save_soal(request: SaveSoalRequest):
         "jumlah_tersimpan": len(request.soal_list)
     }
 
+# tahap ke 13 save_soal_services
 
-# ==============================
+
+
 # GET LIST SOAL (UNTUK FRONTEND)
-# ==============================
 
 @router.get("/")
 def list_soal(
@@ -136,9 +139,7 @@ def list_soal(
     ]
 
 
-# ==============================
 # DELETE SOAL
-
 
 @router.delete("/{soal_id}")
 def delete_soal(soal_id: int, db: Session = Depends(get_db)):

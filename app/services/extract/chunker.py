@@ -1,3 +1,5 @@
+
+# tahap ke 4 extract
 def chunk_text(text: str, page_number: int, file_id: str,
                chunk_size: int = 500,
                overlap: int = 200):
@@ -35,3 +37,5 @@ def chunk_text(text: str, page_number: int, file_id: str,
         start += step
 
     return chunks
+
+# tahap ke 5 indobert_embedder

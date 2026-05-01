@@ -38,6 +38,7 @@ SETIAP soal harus MANDIRI dan bisa dijawab tanpa konteks tambahan.
 Soal menguji PEMAHAMAN KONSEP secara langsung, bukan kemampuan membaca/referensi teks.
 """
 
+# tahap ke 8 recreate
 # context engineering utama
 def build_recreate_prompt(
     substansi,
@@ -172,3 +173,5 @@ JANGAN TAMBAHKAN PENJELASAN DI LUAR JSON.
 """
 
     return prompt
+
+# tahap 9 gemini client

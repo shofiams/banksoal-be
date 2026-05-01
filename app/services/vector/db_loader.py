@@ -2,7 +2,7 @@ from sqlalchemy.orm import joinedload
 from app.models.soal import Soal
 from app.core.database import SessionLocal
 
-
+# tahap 4a recreate
 def get_soal_lama(id_topik, level_list):
     """
     Mengambil soal lama dari database berdasarkan topik dan level.

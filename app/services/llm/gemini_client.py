@@ -13,14 +13,14 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-# ─────────────────────────────────────────────
 # Konstanta — ubah di sini kalau perlu tuning
-# ─────────────────────────────────────────────
+
 REQUEST_TIMEOUT   = 120  # detik maksimal per satu LLM call
 MAX_RETRIES       = 3    # berapa kali coba ulang kalau gagal
 RETRY_DELAY_BASE  = 5    # detik jeda awal (dikalikan nomor attempt)
 MAX_SOAL_PER_CALL = 8    # batas soal per satu LLM call (chunked generation)
 
+# tahap 9 recreate
 # proses generate soal
 def generate_text(prompt: str, timeout: int = REQUEST_TIMEOUT) -> str:
     """
@@ -63,7 +63,10 @@ def generate_text(prompt: str, timeout: int = REQUEST_TIMEOUT) -> str:
     logger.error(f"[Gemini] Semua {MAX_RETRIES} attempt gagal.")
     raise last_exc
 
+# tahap 10 recreate distribution _validator.py
 
+# tahap ke 10 extract
+# proses geenerate 
 def generate_text_chunked(
     build_prompt_fn,
     total_soal: int,
@@ -113,3 +116,5 @@ def generate_text_chunked(
 
     logger.info(f"[Chunked] Selesai. Total soal terkumpul: {len(all_results)}")
     return all_results
+
+# tahap ke 11 soal_validator.py

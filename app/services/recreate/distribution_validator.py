@@ -5,7 +5,7 @@ SUB_TO_LEVEL = {
     "C4": "HOTS", "C5": "HOTS", "C6": "HOTS",
 }
 
-
+# tahap 10 recreate
 def validate_distribution(generated_soal_list, distribusi_target):
     """
     Validasi distribusi soal yang dihasilkan terhadap target.
@@ -62,3 +62,5 @@ def validate_distribution(generated_soal_list, distribusi_target):
                 )
 
     return True
+
+# tahap 11 soal routes

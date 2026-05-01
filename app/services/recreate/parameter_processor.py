@@ -8,6 +8,7 @@ SUB_TO_LEVEL = {
 ALLOWED_SUB_LEVELS = set(SUB_TO_LEVEL.keys())
 ALLOWED_LEGACY     = {"LOTS", "MOTS", "HOTS"}
 
+# tahap 3 recreate
 # utama, validasi & normalisasi parameter
 def process_parameter(
     id_topik,
@@ -53,3 +54,5 @@ def process_parameter(
         "jumlah_soal": jumlah_soal,
         "distribusi_level": normalized
     }
+
+# tahap 4 build_from_db

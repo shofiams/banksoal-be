@@ -2,6 +2,8 @@ import os
 import pdfplumber
 from docx import Document
 
+# tahap ke 2 extract 
+# mengecek ekstansi file
 # proses extract file / parse dokumen
 def parse_document(file_path):
     ext = os.path.splitext(file_path)[1].lower()
@@ -27,3 +29,5 @@ def parse_docx(file_path):
     doc = Document(file_path)
     full_text = "\n".join([p.text for p in doc.paragraphs])
     return [(1, full_text)]
+
+# tahap ke 3 prepocessor.py

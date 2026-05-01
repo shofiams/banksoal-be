@@ -17,7 +17,9 @@ SUB_TO_LEVEL = {
     "C4": "HOTS", "C5": "HOTS", "C6": "HOTS",
 }
 
-
+# tahap ke 2 recreate
+# menjalankan seluruh proses recreate secara berurutan
+# tahap ke 3 parameter processor 
 def run_recreate_pipeline(
     id_topik,
     jenjang,

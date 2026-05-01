@@ -6,7 +6,7 @@ def clean_text(text: str) -> str:
     text = re.sub(r"\s+", " ", text)
     return text
 
-
+# tahap 4b recreate
 def normalize_soal(soal):
     """
     Normalisasi untuk ORM Soal object.
