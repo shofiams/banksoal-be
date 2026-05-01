@@ -20,10 +20,8 @@ def get_db():
         db.close()
 
 
-# ========================
 # JENJANG
-# ========================
-@router.get("/jenjang")
+@router.get("/jenjang") 
 def list_jenjang(db: Session = Depends(get_db)):
     return db.query(Jenjang).all()
 
@@ -46,17 +44,14 @@ def create_jenjang(request: CreateJenjangRequest, db: Session = Depends(get_db))
     return {"status": "created", "id": jenjang.id, "nama": jenjang.nama}
 
 
-# ========================
 # MODUL
-# ========================
 @router.get("/modul")
 def list_modul(db: Session = Depends(get_db)):
     return db.query(Modul).all()
 
 
-# ========================
 # TOPIK
-# ========================
+
 @router.get("/topik")
 def list_topik(
     jenjang_id: Optional[int] = Query(None),
@@ -74,9 +69,7 @@ def list_topik(
     return query.all()
 
 
-# ========================
 # CREATE MODUL + TOPIK BARU
-# ========================
 
 class CreateTopikRequest(BaseModel):
     nama_modul: str

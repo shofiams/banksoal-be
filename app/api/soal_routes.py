@@ -13,7 +13,6 @@ router = APIRouter(prefix="/soal", tags=["Soal Management"])
 
 
 # DATABASE DEPENDENCY
-
 def get_db():
     db = SessionLocal()
     try:
@@ -76,7 +75,7 @@ class SaveSoalRequest(BaseModel):
 # tahap ke 11 recreate simpan soal
 # SAVE ENDPOINT
 # utama penyimpanan utama
-@router.post("/save")
+@router.post("/save") # API simpan soal
 def save_soal(request: SaveSoalRequest):
     try:
         save_generated_soal(
@@ -100,11 +99,9 @@ def save_soal(request: SaveSoalRequest):
 
 # tahap ke 13 save_soal_services
 
-
-
 # GET LIST SOAL (UNTUK FRONTEND)
 
-@router.get("/")
+@router.get("/") # API ambil list soal
 def list_soal(
     topik_id: Optional[int] = Query(None),
     db: Session = Depends(get_db)
@@ -141,7 +138,7 @@ def list_soal(
 
 # DELETE SOAL
 
-@router.delete("/{soal_id}")
+@router.delete("/{soal_id}") # API hapus soal
 def delete_soal(soal_id: int, db: Session = Depends(get_db)):
     soal = db.query(Soal).filter(Soal.id == soal_id).first()
 

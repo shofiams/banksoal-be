@@ -97,7 +97,7 @@ async def upload_file(file: UploadFile = File(...)):
 
 # tahap awal AI Extract, request awal dari front end
 # tahap input parameter
-@router.post("/full-generate")
+@router.post("/full-generate") # API Ai Extract
 async def full_generate(
     file: UploadFile = File(...),
     modul: str = Form(...),

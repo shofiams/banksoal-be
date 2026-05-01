@@ -26,7 +26,7 @@ class RecreateRequest(BaseModel):
     distribusi_level: Dict[str, int]
 
 # tahap ke 1 recreate
-@router.post("/recreate")
+@router.post("/recreate") # API Ai Recreate
 def recreate_soal(request: RecreateRequest):
 
     distribusi = request.distribusi_level
