@@ -3,7 +3,6 @@ import time
 from app.services.recreate.parameter_processor import process_parameter
 from app.services.vector.build_from_db import build_vector_from_db
 from app.services.recreate.substansi_builder import build_substansi
-from app.services.recreate.similarity_checker import check_similarity_with_references
 from app.services.recreate.distribution_validator import validate_distribution
 
 from app.services.llm.gemini_client import generate_text, MAX_SOAL_PER_CALL  # ← generate_text_chunked TIDAK dipakai di sini
@@ -307,7 +306,6 @@ def run_recreate_pipeline(
 
         print("\n===== STEP 10 - VALIDATION =====")
         validate_distribution(parsed, param["distribusi_level"])
-        check_similarity_with_references(parsed, results)
 
         return {
             "soal"         : parsed,
